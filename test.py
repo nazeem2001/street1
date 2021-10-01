@@ -49,30 +49,33 @@ while(1):
     x=s.readline().decode()
     print(x)
     x=x[8:10]
-    x=int(x)
-    print(x)
-    
+    try:
+        x=int(x)
+        print(x)
+        
 
-    if x>50:
-        x=list('111')
-        if ctrl1:
-            x[0]=r1
-        if ctrl2:
-            x[1]=r2
-        if ctrl3:
-            x[2]=r3
-        x=''.join(x)
-        print(x)
-        s.write(x.encode())
-     #   time.sleep(1)
-    else:
-        x=list('000')
-        if ctrl1:
-            x[0]=r1
-        if ctrl2:
-            x[1]=r2
-        if ctrl3:
-            x[2]=r3
-        x=''.join(x)
-        print(x)
-        s.write(x.encode())
+        if x>50:
+            x=list('111')
+            if ctrl1:
+                x[0]=r1
+            if ctrl2:
+                x[1]=r2
+            if ctrl3:
+                x[2]=r3
+            x=''.join(x)
+            print(x)
+            s.write(x.encode())
+        #   time.sleep(1)
+        else:
+            x=list('000')
+            if ctrl1:
+                x[0]=r1
+            if ctrl2:
+                x[1]=r2
+            if ctrl3:
+                x[2]=r3
+            x=''.join(x)
+            print(x)
+            s.write(x.encode())
+    finally:
+        pass
