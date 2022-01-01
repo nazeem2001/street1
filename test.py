@@ -44,29 +44,17 @@ ctrl2=0
 ctrl3=0
 
 s= serial.Serial('COM17',9600)
-time.sleep(0.5)
+#time.sleep(0.5)
 while(1): 
     x=s.readline().decode()
     print(x)
-    x=x[8:10]
+    x=x[8:]
     try:
         x=int(x)
         print(x)
         
 
         if x>50:
-            x=list('111')
-            if ctrl1:
-                x[0]=r1
-            if ctrl2:
-                x[1]=r2
-            if ctrl3:
-                x[2]=r3
-            x=''.join(x)
-            print(x)
-            s.write(x.encode())
-        #   time.sleep(1)
-        else:
             x=list('000')
             if ctrl1:
                 x[0]=r1
@@ -75,6 +63,20 @@ while(1):
             if ctrl3:
                 x[2]=r3
             x=''.join(x)
+            #x+='\0\n'
+            print(x)
+            s.write(x.encode())
+        #   time.sleep(1)
+        else:
+            x=list('111')
+            if ctrl1:
+                x[0]=r1
+            if ctrl2:
+                x[1]=r2
+            if ctrl3:
+                x[2]=r3
+            x=''.join(x)
+            #x+='\0\n'
             print(x)
             s.write(x.encode())
     finally:
